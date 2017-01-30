@@ -3,14 +3,17 @@ import pandas as pd
 # TODO: Load up the dataset
 # Ensuring you set the appropriate header column names
 #
-# .. your code here ..
-
+df = pd.read_csv('Datasets/servo.data', 
+                 names = ['motor', 'screw', 'pgain', 'vgain', 'class'],
+                 dtype = {'class' : object}) # don't interpret type
 
 # TODO: Create a slice that contains all entries
 # having a vgain equal to 5. Then print the 
 # length of (# of samples in) that slice:
 #
-# .. your code here ..
+df_vgain = df[ df.vgain == 5 ]
+
+print('number of vgain equal to 5: {}'.format(len(df_vgain)))
 
 
 # TODO: Create a slice that contains all entries
@@ -19,7 +22,8 @@ import pandas as pd
 # samples in) that slice:
 #
 # .. your code here ..
-
+df_ms = df[ (df.motor == 'E') & (df.screw == 'E') ]
+print('number of entries having motor == E and screw == E: {}'.format(len(df_ms)))
 
 
 # TODO: Create a slice that contains all entries
@@ -28,7 +32,9 @@ import pandas as pd
 # value for the samples in that slice. Once
 # you've found it, print it:
 #
-# .. your code here ..
+dfg = df[ df.pgain == 4 ]
+print('mean vgain for pgain == 4: {}'.format(dfg.vgain.mean()))
+print(dfg.describe())
 
 
 
