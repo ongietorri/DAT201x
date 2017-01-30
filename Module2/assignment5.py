@@ -6,11 +6,11 @@ import numpy as np
 # TODO:
 # Load up the dataset, setting correct header labels.
 #
-# .. your code here ..
+df = pd.read_csv('Datasets/census.data',
+                 names = ['education', 'age', 'capital-gain', 'race', 'capital-loss', 'hours-per-week', 'sex', 'classification'],
+                 na_values = '?',
+                 dtype = { 'age' : np.int32})
 
-
-
-#
 # TODO:
 # Use basic pandas commands to look through the dataset... get a
 # feel for it before proceeding! Do the data-types of each column
@@ -23,9 +23,7 @@ import numpy as np
 # should be represented as nans, you can convert them using
 # na_values when loading the dataframe.
 #
-# .. your code here ..
-
-
+df.info()
 
 #
 # TODO:
@@ -38,9 +36,8 @@ import numpy as np
 # what makes more sense generally---to represent such features with a
 # continuous numeric type... or a series of categories?
 #
-# .. your code here ..
-
-
+df.race = df.race.astype('category')
+df.sex = df.sex.astype('category')
 
 #
 # TODO:
