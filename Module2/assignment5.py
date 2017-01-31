@@ -8,8 +8,7 @@ import numpy as np
 #
 df = pd.read_csv('Datasets/census.data',
                  names = ['education', 'age', 'capital-gain', 'race', 'capital-loss', 'hours-per-week', 'sex', 'classification'],
-                 na_values = '?',
-                 dtype = { 'age' : np.int32})
+                 na_values = '?')
 
 # TODO:
 # Use basic pandas commands to look through the dataset... get a
@@ -24,7 +23,6 @@ df = pd.read_csv('Datasets/census.data',
 # na_values when loading the dataframe.
 #
 df.info()
-
 #
 # TODO:
 # Look through your data and identify any potential categorical
@@ -35,14 +33,17 @@ df.info()
 # or continuous (numerical). If you ever get confused, think to yourself
 # what makes more sense generally---to represent such features with a
 # continuous numeric type... or a series of categories?
-#
-df.race = df.race.astype('category')
-df.sex = df.sex.astype('category')
 
-#
-# TODO:
-# Print out your dataframe
-#
-# .. your code here ..
+# ordinal
+df.education = df.education.astype('category', ordered = True) # , categories = [...]
+df.classification = df.classification.astype('category', ordered = True, categories = ['<=50K', '>50K'])
 
+# nominal
+df.race = df.race.astype('category') #.cat.codes
+df.sex = df.sex.astype('category') #.cat.codes
 
+df.dtypes
+# or, for nominal values
+df = pd.get_dummies(df, columns=['race', 'sex'])
+
+print(df.head())
