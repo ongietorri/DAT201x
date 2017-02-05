@@ -24,13 +24,12 @@ fig = plt.figure()
 # optional display parameter c='red', and also label your
 # axes
 # 
-ax = fig.add_subplot(111, projection='3d')
+ax = fig.add_subplot(211, projection='3d')
 ax.scatter3D(xs=df.area, ys=df.perimeter, zs=df.asymmetry, c='red')
 ax.set_xlabel('area')
 ax.set_ylabel('perimeter')
 ax.set_zlabel('asymmetry')
 
-fig = plt.figure()
 #
 # TODO: Create a new 3D subplot using fig. Then use the
 # subplot to graph a 3D scatter plot using the width,
@@ -38,7 +37,7 @@ fig = plt.figure()
 # optional display parameter c='green', and also label your
 # axes
 # 
-ax = fig.add_subplot(111, projection='3d')
+ax = fig.add_subplot(212, projection='3d')
 ax.scatter3D(xs=df.width, ys=df.groove, zs=df.length, c='green')
 ax.set_xlabel('width')
 ax.set_ylabel('groove')
@@ -46,5 +45,3 @@ ax.set_zlabel('length')
 
 
 plt.show()
-
-
