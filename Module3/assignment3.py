@@ -12,8 +12,7 @@ plt.style.use('ggplot')
 # TODO: Load up the Seeds Dataset into a Dataframe
 # It's located at 'Datasets/wheat.data'
 # 
-# .. your code here ..
-
+df = pd.read_csv('Datasets/wheat.data', header=0, index_col = 0)
 
 
 fig = plt.figure()
@@ -25,8 +24,11 @@ fig = plt.figure()
 # optional display parameter c='red', and also label your
 # axes
 # 
-# .. your code here ..
-
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter3D(xs=df.area, ys=df.perimeter, zs=df.asymmetry, c='red')
+ax.set_xlabel('area')
+ax.set_ylabel('perimeter')
+ax.set_zlabel('asymmetry')
 
 fig = plt.figure()
 #
@@ -36,7 +38,11 @@ fig = plt.figure()
 # optional display parameter c='green', and also label your
 # axes
 # 
-# .. your code here ..
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter3D(xs=df.width, ys=df.groove, zs=df.length, c='green')
+ax.set_xlabel('width')
+ax.set_ylabel('groove')
+ax.set_zlabel('length')
 
 
 plt.show()

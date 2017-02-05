@@ -11,29 +11,24 @@ plt.style.use('ggplot')
 # TODO: Load up the Seeds Dataset into a Dataframe
 # It's located at 'Datasets/wheat.data'
 # 
-# .. your code here ..
-
+df = pd.read_csv('Datasets/wheat.data', header=0, index_col = 0)
+df.dtypes
 
 #
 # TODO: Create a 2d scatter plot that graphs the
 # area and perimeter features
-# 
-# .. your code here ..
-
+df.plot.scatter('area', 'perimeter')
 
 #
 # TODO: Create a 2d scatter plot that graphs the
 # groove and asymmetry features
-# 
-# .. your code here ..
-
+df.plot.scatter('groove', 'asymmetry')
 
 #
 # TODO: Create a 2d scatter plot that graphs the
 # compactness and width features
 # 
-# .. your code here ..
-
+df.plot.scatter('compactness', 'width')
 
 
 # BONUS TODO:
